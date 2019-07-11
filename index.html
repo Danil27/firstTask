@@ -1,0 +1,91 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="content">
+        <div class="leftcontainer">
+            <ul id="leftlist">
+                <li tabindex="0" id="1" ondblclick="lefttoright(this.innerHTML, this.id)"> 1 </li>
+                <li tabindex="0" id="2" ondblclick="lefttoright(this.innerHTML, this.id)"> 2 </li>
+                <li tabindex="0" id="3" ondblclick="lefttoright(this.innerHTML, this.id)"> 3 </li>
+            </ul>
+        </div>
+        <div class="centercontainer">
+            <button onclick="allright()">>></button>
+            <button onclick="allleft()">
+                <<</button> </div> <div class="rightcontainer">
+                    <ul id="rightlist">
+                    </ul>
+        </div>
+    </div>
+    <script>
+        //перемещение всех элементов в правый блок
+        function allright() {
+            var leftelem = document.getElementById('leftlist');
+            for (var i = 0; i < leftelem.childNodes.length; i++) {
+                if (leftelem.childNodes[i].innerHTML == undefined) {
+                    continue;
+                }
+                var newLi = document.createElement('li');
+                newLi.innerHTML = leftelem.childNodes[i].innerHTML;
+                newLi.tabIndex = 0;
+                newLi.id = leftelem.childNodes[i].id;
+                newLi.setAttribute('ondblclick', 'rightttoleft(this.innerHTML, this.id)', false);
+                rightlist.appendChild(newLi);
+            }
+
+            //удаление всех элементов из левого блока
+            while (leftelem.firstChild) {
+                leftelem.removeChild(leftelem.firstChild);
+            }
+        }
+
+        //перемещение всех элементов в левый блок
+        function allleft() {
+            var rightelem = document.getElementById('rightlist');
+            for (var i = 0; i < rightelem.childNodes.length; i++) {
+                if (rightelem.childNodes[i].innerHTML == undefined) {
+                    continue;
+                }
+                var newLi = document.createElement('li');
+                newLi.innerHTML = rightelem.childNodes[i].innerHTML;
+                newLi.tabIndex = 0;
+                newLi.id = rightelem.childNodes[i].id;
+                newLi.setAttribute('ondblclick', 'lefttoright(this.innerHTML, this.id)', false);
+                leftlist.appendChild(newLi);
+            }
+            //удаление всех элементов из правого блока
+            while (rightelem.firstChild) {
+                rightelem.removeChild(rightelem.firstChild);
+            }
+        }
+
+        //перемещение одного выбраного элемента в правый блок
+        function lefttoright(s, elid) {
+            var newLi = document.createElement('li');
+            document.getElementById(elid).remove();
+            newLi.innerHTML = s;
+            newLi.tabIndex = 0;
+            newLi.id = elid;
+            newLi.setAttribute('ondblclick', 'rightttoleft(this.innerHTML, this.id)', false);
+            rightlist.appendChild(newLi);
+        }
+
+        //перемещение одного выбраного элемента в левый блок
+        function rightttoleft(s, elid) {
+            var newLir = document.createElement('li');
+            document.getElementById(elid).remove();
+            newLir.innerHTML = s;
+            newLir.tabIndex = 0;
+            newLir.id = elid;
+            newLir.setAttribute('ondblclick', 'lefttoright(this.innerHTML, this.id)', false);
+            leftlist.appendChild(newLir);
+        }
+
+    </script>
+</body>
+
+</html>

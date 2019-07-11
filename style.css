@@ -1,0 +1,39 @@
+body{
+    background-color: rgb(238, 243, 235);
+}
+.leftcontainer{
+    width: 400px;
+    height: 400px;
+    background-color: rgba(254, 255, 241, 0.644);
+    float: left;
+    border: 1px solid black;
+}
+.centercontainer{
+    height: 400px;
+    width: 50px;
+    float: left;
+    margin-left: 25px;
+    border: 1px solid black;
+}
+.centercontainer>button{
+    margin: 110px 10px 0 10px;
+}
+.rightcontainer{
+    width: 400px;
+    height: 400px;
+    background-color: rgba(254, 255, 241, 0.644);
+    float: right;
+    border: 1px solid black;
+}
+li{
+  
+    width: 340px;
+}
+.content{
+    margin: 50px auto 0 auto;
+    width: 900px;
+    padding: 20px;
+}
+li:hover{
+    background-color: rgba(55, 54, 121, 0.123);
+}
